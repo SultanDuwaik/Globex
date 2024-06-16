@@ -10,17 +10,34 @@
                 <div class="col-lg-6 col-md-5">
                     <div class="header__top__right">
                         <div class="header__top__links">
-                            <a href="#">Sign in</a>
-                            <a href="#">FAQs</a>
+                            @if (!Auth::check())
+                            <a href="{{route('register')}}">Sign in</a>    
+                            @endif
                         </div>
-                        <div class="header__top__hover">
-                            <span>Usd <i class="arrow_carrot-down"></i></span>
+                        @if (Auth::check())
+                            <div class="header__top__hover">
+                            <span>Welcome,  {{ Auth::user()->name }} <i class="arrow_carrot-down"></i></span>
                             <ul>
-                                <li>USD</li>
-                                <li>EUR</li>
-                                <li>USD</li>
-                            </ul>
-                        </div>
+                                <li>
+                                    <form action="{{route('logout')}}" method="post">
+                                        @csrf
+                                        @method('post')
+                                        <button type="submit" style="border: none; background-color:transparent">
+                                            Logout
+                                        </button>
+                                    </form>
+                                </li>
+                                </ul>
+                                </div>
+                        @endif
+
+                        <form action="{{route('logout')}}" method="post">
+                            @csrf
+                            @method('post')
+                            <button type="submit" style="border: none; background-color:transparent">
+                                Logout
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

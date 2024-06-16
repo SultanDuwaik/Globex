@@ -33,4 +33,5 @@ class NavigationController extends Controller
     function about(){
         return view("user.layouts.about");
     }
+
 }

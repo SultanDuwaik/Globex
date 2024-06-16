@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\Admin\NavigationController as AdminNavigationController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\Admin;
+use App\Http\Middleware\RedirectIfAuthenticated;
 
 Route::get('/', [NavigationController::class , "home"])->name("home");
 Route::get('/about', [NavigationController::class, 'about'])->name("about");
@@ -16,5 +19,18 @@ Route::get('/shopping-cart', [NavigationController::class, 'shopping_cart'])->na
 
 
 
+Route::middleware([Admin::class])->group(function(){
+    Route::get('/admin', [AdminNavigationController::class , "home"])->name("admin.home");
+});
 
-Route::get('/admin', [AdminNavigationController::class , "home"])->name("home");
+
+Route::middleware([RedirectIfAuthenticated::class])->group(function(){
+    Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [AuthController::class, 'register']);
+    
+    Route::get('login',    [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [AuthController::class, 'login']);
+});
+    
+Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
