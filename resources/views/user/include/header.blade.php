@@ -11,7 +11,7 @@
                     <div class="header__top__right">
                         <div class="header__top__links">
                             @if (!Auth::check())
-                            <a href="{{route('register')}}">Sign in</a>    
+                            <a href="{{route('login')}}">Sign in</a>    
                             @endif
                         </div>
                         @if (Auth::check())
@@ -31,13 +31,6 @@
                                 </div>
                         @endif
 
-                        <form action="{{route('logout')}}" method="post">
-                            @csrf
-                            @method('post')
-                            <button type="submit" style="border: none; background-color:transparent">
-                                Logout
-                            </button>
-                        </form>
                     </div>
                 </div>
             </div>

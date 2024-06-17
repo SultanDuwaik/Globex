@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\Admin\NavigationController as AdminNavigationController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -21,6 +22,13 @@ Route::get('/shopping-cart', [NavigationController::class, 'shopping_cart'])->na
 
 Route::middleware([Admin::class])->group(function(){
     Route::get('/admin', [AdminNavigationController::class , "home"])->name("admin.home");
+    Route::get('/admin/products/index', [ProductController::class , "index"])->name("admin.products.index");
+
+    Route::get('/admin/products/create', [ProductController::class , "create"])->name("admin.products.create");
+    Route::post('/admin/products/index', [ProductController::class , "store"])->name("admin.products.store");
+    Route::get('/admin/products/edit/{product}', [ProductController::class , "edit"])->name("admin.products.edit");
+    Route::put('/admin/products/update/{product}', [ProductController::class , "update"])->name("admin.products.update");
+    Route::delete('/admin/products/delete/{product}', [ProductController::class , "destroy"])->name("admin.products.delete");
 });
 
 

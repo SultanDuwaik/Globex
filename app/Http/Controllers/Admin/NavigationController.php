@@ -10,4 +10,5 @@ class NavigationController extends Controller
     function home(){
         return view('admin.pages.index');
     }
+
 }
