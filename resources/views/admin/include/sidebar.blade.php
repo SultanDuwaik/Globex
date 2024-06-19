@@ -28,28 +28,48 @@
           
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Products
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{route('admin.products.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Show Product</p>
+                  <p>&nbsp;&nbsp;Show Product</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('admin.products.create')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Product</p>
+                  <p>&nbsp;&nbsp;Add Product</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                Categories
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('admin.categories.index')}}" class="nav-link">
+                  <p>&nbsp;&nbsp;Show Categories</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('admin.categories.create')}}" class="nav-link">
+                  <p>&nbsp;&nbsp;Add Category</p>
                 </a>
               </li>
             </ul>
           </li>
           
+
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

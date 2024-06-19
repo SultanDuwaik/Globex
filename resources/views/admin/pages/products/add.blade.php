@@ -6,7 +6,7 @@
 
 <div class="content-wrapper p-5">
 
-    <form action="{{route('admin.products.store')}}" method="post">
+    <form action="{{route('admin.products.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('post')
         
@@ -53,21 +53,46 @@
 
         </div>
         
-        <div class="form-group">
-            <label for="img">Image 1:</label>
+        <div class="form-group my-4">
+            <label for="img">Main Product Image *</label>
+            <br>
             <input type="file" id="img1" name="img1" accept="image/*">
+            @error('img1')
+            <span class="error-message"><i class="fa-solid fa-circle-exclamation"></i>  {{ $message }}</span>
+            @enderror
+
         </div>
-        <div class="form-group">
-            <label for="img">Image 2:</label>
-            <input type="file" id="img2" name="img2" accept="image/*">
+        <div class="form-group my-4">
+            <label for="img">Product Additional Image 2</label>
+            <i class="fa-solid fa-circle-exclamation" data-bs-toggle="tooltip" data-bs-placement="top" title="Adding additional images of your product is optional, but it can enhance customer confidence"></i>
+            <br>
+            <input type="file" id="img2" name="img2" accept="image/*"><br>
+            @error('img2')
+            <span class="error-message"><i class="fa-solid fa-circle-exclamation"></i>  {{ $message }}</span>
+            @enderror
+
         </div>
-        <div class="form-group">
-            <label for="img">Image 3:</label>
+        <div class="form-group my-4">
+            <label for="img">Product Additional Image 3</label>
+            <i class="fa-solid fa-circle-exclamation" data-bs-toggle="tooltip" data-bs-placement="top" title="Adding additional images of your product is optional, but it can enhance customer confidence"></i>
+            <br>
             <input type="file" id="img3" name="img3" accept="image/*">
+            @error('img3')
+            <span class="error-message"><i class="fa-solid fa-circle-exclamation"></i>  {{ $message }}</span>
+            @enderror
+
+            
+
         </div>
-        <div class="form-group">
-            <label for="img">Image 4:</label>
+        <div class="form-group my-4">
+            <label for="img">Product Additional Image 4</label>
+            <i class="fa-solid fa-circle-exclamation" data-bs-toggle="tooltip" data-bs-placement="top" title="Adding additional images of your product is optional, but it can enhance customer confidence"></i>
+            <br>
             <input type="file" id="img4" name="img4" accept="image/*">
+            @error('img4')
+            <span class="error-message"><i class="fa-solid fa-circle-exclamation"></i>  {{ $message }}</span>
+            @enderror
+
         </div>
           
         

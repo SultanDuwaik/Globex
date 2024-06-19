@@ -50,14 +50,13 @@
                         <li><a href="{{route('shop')}}">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="dropdown">
-                                <li><a href="{{route('about')}}">About Us</a></li>
                                 <li><a href="{{route('shop.details')}}">Shop Details</a></li>
                                 <li><a href="{{route('shopping.cart')}}">Shopping Cart</a></li>
                                 <li><a href="{{route('checkout')}}">Check Out</a></li>
-                                <li><a href="{{route('blog.details')}}">Blog Details</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{route('blog')}}">Blog</a></li>
+                        <li><a href="{{route('about')}}">About Us</a></li>
+
                         <li><a href="{{route('contact')}}">Contacts</a></li>
                     </ul>
                 </nav>

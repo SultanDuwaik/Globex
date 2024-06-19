@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\Admin\NavigationController as AdminNavigationController;
@@ -22,13 +23,24 @@ Route::get('/shopping-cart', [NavigationController::class, 'shopping_cart'])->na
 
 Route::middleware([Admin::class])->group(function(){
     Route::get('/admin', [AdminNavigationController::class , "home"])->name("admin.home");
+    
     Route::get('/admin/products/index', [ProductController::class , "index"])->name("admin.products.index");
-
     Route::get('/admin/products/create', [ProductController::class , "create"])->name("admin.products.create");
     Route::post('/admin/products/index', [ProductController::class , "store"])->name("admin.products.store");
     Route::get('/admin/products/edit/{product}', [ProductController::class , "edit"])->name("admin.products.edit");
     Route::put('/admin/products/update/{product}', [ProductController::class , "update"])->name("admin.products.update");
     Route::delete('/admin/products/delete/{product}', [ProductController::class , "destroy"])->name("admin.products.delete");
+
+
+    Route::get('/admin/categories/index', [CategoryController::class , "index"])->name("admin.categories.index");
+    Route::get('/admin/categories/create', [CategoryController::class , "create"])->name("admin.categories.create");
+    Route::post('/admin/categories/index', [CategoryController::class , "store"])->name("admin.categories.store");
+    Route::get('/admin/categories/edit/{category}', [CategoryController::class , "edit"])->name("admin.categories.edit");
+    Route::put('/admin/categories/update/{category}', [CategoryController::class , "update"])->name("admin.categories.update");
+    Route::delete('/admin/categories/delete/{category}', [CategoryController::class , "destroy"])->name("admin.categories.delete");
+
+
+    
 });
 
 

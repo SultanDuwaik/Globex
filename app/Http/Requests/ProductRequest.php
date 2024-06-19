@@ -27,9 +27,12 @@ class ProductRequest extends FormRequest
             'description' => 'required|string',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
+            'img1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'img2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'img3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'img4' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
-
 
     public function messages(): array
     {
@@ -41,7 +44,20 @@ class ProductRequest extends FormRequest
             'price.numeric' => 'The product price must be a numeric value.',
             'stock.required' => 'The product stock is required.',
             'stock.integer' => 'The product stock must be an integer.',
+            'img1.required' => 'Image 1 is required.',
+            'img1.image' => 'Image 1 must be a valid image file.',
+            'img1.mimes' => 'Image 1 must be a file of type: jpeg, png, jpg, gif, svg.',
+            'img1.max' => 'Image 1 may not be greater than 2048 kilobytes.',
+            'img2.image' => 'Image 2 must be a valid image file.',
+            'img2.mimes' => 'Image 2 must be a file of type: jpeg, png, jpg, gif, svg.',
+            'img2.max' => 'Image 2 may not be greater than 2048 kilobytes.',
+            'img3.image' => 'Image 3 must be a valid image file.',
+            'img3.mimes' => 'Image 3 must be a file of type: jpeg, png, jpg, gif, svg.',
+            'img3.max' => 'Image 3 may not be greater than 2048 kilobytes.',
+            'img4.image' => 'Image 4 must be a valid image file.',
+            'img4.mimes' => 'Image 4 must be a file of type: jpeg, png, jpg, gif, svg.',
+            'img4.max' => 'Image 4 may not be greater than 2048 kilobytes.',
         ];
     }
-
+    
 }

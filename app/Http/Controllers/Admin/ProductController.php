@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
+use App\Models\Image;
 use Illuminate\Http\Request;
+
 
 class ProductController extends Controller
 {
@@ -15,6 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(10);
+
         return view('admin.pages.products.index', compact('products'));
     }
 
@@ -31,8 +34,21 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        dd($request);
         $product = Product::create($request->validated());
+
+        if ($request->hasFile('img1')) {
+            $this->saveImage($request->file('img1'), $product->id);
+        }
+        if ($request->hasFile('img2')) {
+            $this->saveImage($request->file('img2'), $product->id);
+        }
+        if ($request->hasFile('img3')) {
+            $this->saveImage($request->file('img3'), $product->id);
+        }
+        if ($request->hasFile('img4')) {
+            $this->saveImage($request->file('img4'), $product->id);
+        }
+    
         return redirect()->route('admin.products.index')->with('success', 'Product created successfully.');
 
     }
@@ -50,7 +66,8 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $product = Product::find($id);
+        $product = Product::with('images')->find($id);
+
         return view('admin.pages.products.edit', compact('product'));
     }
 
@@ -77,4 +94,17 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index')->with('success', 'Product deleted successfully.');
 
     }
+
+    private function saveImage($image, $productId)
+    {
+        $path = $image->store('product_images', 'public');
+        Image::create([
+            'product_id' => $productId,
+            'url' => $path,
+        ]);
+    }
+
+   
+
+
 }
