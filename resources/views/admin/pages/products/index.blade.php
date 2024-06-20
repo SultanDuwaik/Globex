@@ -16,7 +16,7 @@
                 <td>Description</td>
                 <td>Price</td>
                 <td>Stock</td>
-                <td>Edit</td>
+                {{-- <td>Edit</td> --}}
                 <td>Delete</td>
             </tr>
         </thead>
@@ -29,7 +29,7 @@
                 <td>{{$product->description}}</td>
                 <td>{{$product->price}}</td>
                 <td>{{$product->stock}}</td>
-                <td><a href="{{route('admin.products.edit', ['product'=> $product->id])}}">Edit</a></td>
+                {{-- <td><a href="{{route('admin.products.edit', ['product'=> $product->id])}}">Edit</a></td> --}}
                 <td>
                     <form action="{{route('admin.products.delete', ['product'=> $product->id])}}" method="post">
                         @csrf

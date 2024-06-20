@@ -21,6 +21,22 @@
 
         </div>
         <div class="form-group ">
+            <label for="productname">Category</label>
+
+            <select name="category" id="category" class="form-control">
+                <option value="">Select Category</option>
+                @foreach($categories as $category)
+                <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+            </select>
+            @error('category')
+            <span class="error-message"><i class="fa-solid fa-circle-exclamation"></i>  {{ $message }}</span>
+            @enderror
+
+        </div>
+
+
+        <div class="form-group ">
             <label for="productbrandname">Brand Name</label>
             <input type="text" class="form-control" id="productbrandname" name="brand_name" placeholder="product brand name">
             @error('brand_name')
@@ -64,7 +80,7 @@
         </div>
         <div class="form-group my-4">
             <label for="img">Product Additional Image 2</label>
-            <i class="fa-solid fa-circle-exclamation" data-bs-toggle="tooltip" data-bs-placement="top" title="Adding additional images of your product is optional, but it can enhance customer confidence"></i>
+            <i class="fa-solid fa-circle-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Adding additional images of your product is optional, but it can enhance customer confidence"></i>
             <br>
             <input type="file" id="img2" name="img2" accept="image/*"><br>
             @error('img2')
@@ -74,7 +90,7 @@
         </div>
         <div class="form-group my-4">
             <label for="img">Product Additional Image 3</label>
-            <i class="fa-solid fa-circle-exclamation" data-bs-toggle="tooltip" data-bs-placement="top" title="Adding additional images of your product is optional, but it can enhance customer confidence"></i>
+            <i class="fa-solid fa-circle-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Adding additional images of your product is optional, but it can enhance customer confidence"></i>
             <br>
             <input type="file" id="img3" name="img3" accept="image/*">
             @error('img3')
@@ -86,7 +102,7 @@
         </div>
         <div class="form-group my-4">
             <label for="img">Product Additional Image 4</label>
-            <i class="fa-solid fa-circle-exclamation" data-bs-toggle="tooltip" data-bs-placement="top" title="Adding additional images of your product is optional, but it can enhance customer confidence"></i>
+            <i class="fa-solid fa-circle-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Adding additional images of your product is optional, but it can enhance customer confidence"></i>
             <br>
             <input type="file" id="img4" name="img4" accept="image/*">
             @error('img4')

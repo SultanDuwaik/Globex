@@ -4,6 +4,19 @@
 
 @section('content')
 
+<style>
+
+
+
+    .product-image{
+        height: 100px;
+        width: 100px;
+        object-fit: cover
+    }
+
+
+
+</style>
 <div class="content-wrapper p-5">
     {{$product}}
     <form action="{{route('admin.products.update', ['product'=>$product->id])}}" method="post">
@@ -54,6 +67,7 @@
         </div>
 
 
+        
         <div class="form-group">
             <label for="img">Image 1:</label>
             <input type="file" id="img1" name="img1" accept="image/*">
@@ -64,7 +78,7 @@
 
         <div class="form-group">
             <label for="img">Image 2:</label>
-            <input type="file" id="img2" name="img2" accept="image/*">
+            <input type="file" id="img2" name="img2" accept="image/*" value="hrllo" placeholder="">
             @error('img2')
             <span class="error-message"><i class="fa-solid fa-circle-exclamation"></i>  {{ $message }}</span>
             @enderror

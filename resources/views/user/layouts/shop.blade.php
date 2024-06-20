@@ -5,6 +5,7 @@
 
 @section('content')
 
+{{$products}}
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
         <div class="container">
@@ -211,18 +212,23 @@
                         </div>
                     </div>
                     <div class="row">
+
+                        @foreach ($products as $product)
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                                    </ul>
+                                <div class="product_bg">
+                                    <div class="product__item__pic set-bg" data-setbg="{{asset("storage/".$product->images[0]->url)}}">
+                                        <ul class="product__hover">
+                                            <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
+                                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                            </li>
+                                            <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                                        </ul>
+                                    </div>
+    
                                 </div>
                                 <div class="product__item__text">
-                                    <h6>Piqué Biker Jacket</h6>
+                                    <h6>{{$product->name}}</h6>
                                     <a href="#" class="add-cart">+ Add To Cart</a>
                                     <div class="rating">
                                         <i class="fa fa-star-o"></i>
@@ -246,6 +252,8 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+                        
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item sale">
                                 <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">

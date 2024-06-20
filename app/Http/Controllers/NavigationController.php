@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class NavigationController extends Controller
 {
@@ -10,7 +11,8 @@ class NavigationController extends Controller
         return view("user.layouts.index");
     }
     function shop(){
-        return view("user.layouts.shop");
+        $products = Product::with("images")->get();
+        return view("user.layouts.shop", compact('products'));
     }
     function shop_details(){
         return view("user.layouts.shop-details");
